@@ -2910,8 +2910,30 @@ if (btnSaveProfile) {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
-            .then((reg) => console.log('MealMate Service Worker zaregistrovaný úspešne!', reg.scope))
-            .catch((err) => console.log('Registrácia Service Workera zlyhala:', err));
+            .then((reg) => {
+                console.log('MealMate SW zaregistrovaný', reg.scope);
+                // Pri každom otvorení skontroluj či nie je nový SW
+                reg.update();
+                // Ak je nový SW pripravený, hneď ho aktivuj
+                reg.addEventListener('updatefound', () => {
+                    const newWorker = reg.installing;
+                    if (!newWorker) return;
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // Nový SW čaká — povedz mu nech preskočí čakanie
+                            newWorker.postMessage('SKIP_WAITING');
+                            // Po aktivácii reloadni stránku raz, aby sa načítal nový kód
+                            let reloaded = false;
+                            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                                if (reloaded) return;
+                                reloaded = true;
+                                window.location.reload();
+                            });
+                        }
+                    });
+                });
+            })
+            .catch((err) => console.log('Registrácia SW zlyhala:', err));
     });
 }
 
