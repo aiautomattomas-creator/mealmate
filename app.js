@@ -1523,16 +1523,150 @@ const SLOVAK_INGREDIENTS_DICT = [
     { keys: ['olej', 'olejom', 'maslo', 'masle', 'maslom'], p: 0, c: 0, f: 90, cal: 800, name: 'Zdravé tuky / Oleje' },
     
     // ZELENINA / ZÁKLADY (Nízke makrá)
-    { keys: ['špenát', 'spenat', 'špenátom', 'paradajky', 'paradajka', 'paradajkami', 'cibuľa', 'cibula', 'cibuľka', 'cesnak', 'zelenina', 'zeleninou', 'mrkva', 'cuketa', 'paprika', 'špargľa', 'spargla', 'šalát', 'salat'], p: 1, c: 4, f: 0, cal: 22, name: 'Sezónna zelenina' }
+    { keys: ['špenát', 'spenat', 'špenátom', 'paradajky', 'paradajka', 'paradajkami', 'cibuľa', 'cibula', 'cibuľka', 'cesnak', 'zelenina', 'zeleninou', 'mrkva', 'cuketa', 'paprika', 'špargľa', 'spargla', 'šalát', 'salat'], p: 1, c: 4, f: 0, cal: 22, name: 'Sezónna zelenina' },
+
+    // === ROZŠÍRENÉ SUROVINY (nové) ===
+    // Mäso a ryby - podrobnejšie
+    { keys: ['krevety', 'krevetami', 'krevetové'], p: 18, c: 1, f: 1, cal: 95, name: 'Krevety' },
+    { keys: ['kalamáre', 'kalamary', 'chobotnica'], p: 16, c: 3, f: 1, cal: 90, name: 'Morské plody' },
+    { keys: ['morka', 'morčacie', 'morcacie'], p: 24, c: 0, f: 2, cal: 130, name: 'Morčacie prsia' },
+    { keys: ['kačacie', 'kacacie', 'kačka', 'kacka'], p: 18, c: 0, f: 28, cal: 340, name: 'Kačacie mäso' },
+    { keys: ['králičie', 'kralicie', 'králik', 'kralik'], p: 22, c: 0, f: 8, cal: 170, name: 'Králičie mäso' },
+    { keys: ['saláma', 'salama', 'klobása', 'klobasa', 'párky', 'parky', 'špekáčik', 'spekacik'], p: 14, c: 2, f: 28, cal: 320, name: 'Saláma / Klobása' },
+    { keys: ['fazuľa', 'fazula', 'fazole', 'cícer', 'cicer', 'hummus'], p: 9, c: 22, f: 2, cal: 140, name: 'Strukoviny' },
+    { keys: ['šošovica', 'sosovica', 'šošovicový', 'sosovicovy'], p: 9, c: 20, f: 0.5, cal: 115, name: 'Šošovica' },
+    { keys: ['tofu', 'tempeh', 'seitan'], p: 12, c: 3, f: 8, cal: 140, name: 'Tofu / Vegan' },
+
+    // Mliečne / syry rozšírené
+    { keys: ['bryndza', 'bryndzou', 'feta', 'fetou', 'halloumi', 'halumi'], p: 16, c: 2, f: 22, cal: 280, name: 'Slaný syr (bryndza, feta)' },
+    { keys: ['cottage', 'kotedž', 'kottedz'], p: 12, c: 4, f: 4, cal: 100, name: 'Cottage syr' },
+    { keys: ['skyr', 'skyrom'], p: 11, c: 4, f: 0.2, cal: 65, name: 'Skyr' },
+    { keys: ['ricotta', 'mascarpone'], p: 10, c: 4, f: 18, cal: 220, name: 'Ricotta / Mascarpone' },
+    { keys: ['smotana', 'smotanou', 'smotane'], p: 3, c: 4, f: 22, cal: 220, name: 'Smotana' },
+
+    // Sacharidové prílohy a pečivo
+    { keys: ['halušky', 'halusky', 'haluskami'], p: 6, c: 36, f: 2, cal: 190, name: 'Halušky' },
+    { keys: ['knedľa', 'knedla', 'knedlík', 'knedlik', 'knedličky'], p: 7, c: 50, f: 3, cal: 250, name: 'Knedľa' },
+    { keys: ['kuskus', 'couscous', 'bulgur', 'pohánka', 'pohanka', 'quinoa'], p: 10, c: 70, f: 2, cal: 350, name: 'Kuskus / Bulgur / Pohánka' },
+    { keys: ['lievance', 'palacinky', 'pancake', 'pancakes', 'wafle', 'waffles'], p: 7, c: 38, f: 8, cal: 260, name: 'Lievance / Palacinky' },
+    { keys: ['pizza', 'pizzou'], p: 11, c: 33, f: 10, cal: 270, name: 'Pizza' },
+    { keys: ['burger', 'burgerom', 'hamburger'], p: 17, c: 30, f: 16, cal: 320, name: 'Burger' },
+    { keys: ['kebab', 'döner', 'doner', 'gyros'], p: 16, c: 28, f: 14, cal: 290, name: 'Kebab / Döner / Gyros' },
+    { keys: ['rizoto', 'rizotom', 'risotto'], p: 8, c: 58, f: 8, cal: 340, name: 'Rizoto' },
+
+    // Ovocie rozšírené
+    { keys: ['ananás', 'ananas', 'mango', 'broskyňa', 'broskyna', 'hruška', 'hruska', 'pomaranč', 'pomaranc', 'mandarinka', 'kiwi', 'hrozno'], p: 1, c: 14, f: 0, cal: 55, name: 'Čerstvé ovocie (sezónne)' },
+
+    // Nápoje a sladké
+    { keys: ['kávou', 'káva', 'kava', 'espresso', 'cappuccino', 'latte'], p: 1, c: 4, f: 2, cal: 40, name: 'Káva s mliekom' },
+    { keys: ['čokoláda', 'cokolada', 'čokoládou'], p: 7, c: 50, f: 30, cal: 540, name: 'Čokoláda' },
+    { keys: ['zmrzlina', 'zmrzlinou'], p: 4, c: 24, f: 11, cal: 210, name: 'Zmrzlina' },
+    { keys: ['keksy', 'sušienky', 'susienky', 'koláč', 'kolac'], p: 6, c: 60, f: 18, cal: 430, name: 'Keksy / Sušienky / Koláč' },
+
+    // Bežné suroviny
+    { keys: ['huby', 'hubami', 'hríby', 'hriby', 'šampiňóny', 'sampinony'], p: 3, c: 4, f: 0, cal: 30, name: 'Huby' },
+    { keys: ['kapusta', 'kapustou', 'brokolica', 'brokolicou', 'kel', 'karfiol'], p: 3, c: 6, f: 0, cal: 35, name: 'Kapustová zelenina' },
+    { keys: ['kukurica', 'kukuricou', 'hrášok', 'hrasok'], p: 4, c: 18, f: 1, cal: 90, name: 'Kukurica / Hrášok' }
+];
+
+// === COMMON SLOVAK DISHES (kompletné jedlá s plnými makrami pre porciu) ===
+// Tieto sa matchujú PRED ingredientovým parserom — ak nájde silnú zhodu, použijú sa tieto čísla.
+const COMMON_DISHES = [
+    { keys: [['plnené','kura'],['plnene','kura'],['plnené','kuracie'],['plnene','kuracie']], name: 'Plnené kuracie prsia', cal: 480, p: 42, c: 6, f: 30 },
+    { keys: [['vyprážaný','syr'],['vyprazany','syr'],['smažený','syr']], name: 'Vyprážaný syr', cal: 540, p: 22, c: 28, f: 38 },
+    { keys: [['vyprážaný','rezeň'],['vyprazany','rezen'],['rezeň'],['rezen','bravčový'],['kotlík','vyprážaný']], name: 'Vyprážaný rezeň', cal: 520, p: 34, c: 22, f: 32 },
+    { keys: [['sviečková','omáčka'],['svieckova']], name: 'Sviečková na smotane', cal: 620, p: 32, c: 58, f: 28 },
+    { keys: [['segedín'],['segedinsky'],['segedin']], name: 'Segedínsky guláš', cal: 580, p: 30, c: 28, f: 36 },
+    { keys: [['guláš'],['gulas']], name: 'Hovädzí guláš', cal: 520, p: 32, c: 32, f: 26 },
+    { keys: [['bryndzové','halušky'],['bryndzove','halusky']], name: 'Bryndzové halušky', cal: 620, p: 24, c: 68, f: 28 },
+    { keys: [['kapustnica']], name: 'Kapustnica', cal: 280, p: 14, c: 18, f: 16 },
+    { keys: [['paprikáš'],['paprikas']], name: 'Kuracie paprikáš', cal: 540, p: 36, c: 38, f: 24 },
+    { keys: [['lečo'],['leco']], name: 'Lečo s vajcom', cal: 360, p: 18, c: 22, f: 22 },
+    { keys: [['špagety','bolognese'],['spagety','bolognese'],['cestoviny','bolognese']], name: 'Cestoviny bolognese', cal: 560, p: 28, c: 70, f: 18 },
+    { keys: [['carbonara']], name: 'Cestoviny carbonara', cal: 620, p: 24, c: 68, f: 28 },
+    { keys: [['lasagne'],['lazane'],['lasane']], name: 'Lasagne', cal: 520, p: 26, c: 48, f: 24 },
+    { keys: [['rizoto','huby'],['rizoto','hubové'],['risotto','funghi']], name: 'Hubové rizoto', cal: 480, p: 14, c: 64, f: 18 },
+    { keys: [['čínske','kura'],['cinske','kura'],['kuracie','čínsky'],['čínska','zelenina']], name: 'Kuracie čínsky štýl', cal: 460, p: 32, c: 48, f: 14 },
+    { keys: [['pizza','šunka'],['pizza','salama'],['pizza','margherita'],['pizza','prosciutto']], name: 'Pizza (1 porcia ~ 1/2 koláča)', cal: 680, p: 28, c: 78, f: 26 },
+    { keys: [['kebab'],['döner'],['doner'],['gyros']], name: 'Kebab / Döner', cal: 580, p: 32, c: 52, f: 26 },
+    { keys: [['hamburger'],['cheeseburger']], name: 'Burger s hranolkami', cal: 780, p: 38, c: 72, f: 36 },
+    { keys: [['caesar','šalát'],['caesar','salat']], name: 'Caesar šalát s kuracím', cal: 420, p: 38, c: 18, f: 22 },
+    { keys: [['grécky','šalát'],['grecky','salat']], name: 'Grécky šalát', cal: 320, p: 12, c: 14, f: 24 },
+    { keys: [['palacinky','čokoláda'],['palacinky','džem'],['palacinky','tvaroh']], name: 'Sladké palacinky', cal: 420, p: 10, c: 62, f: 14 },
+    { keys: [['šišky'],['siska'],['donut'],['kobliha']], name: 'Šiška / Donut', cal: 320, p: 5, c: 42, f: 16 },
+    { keys: [['krupica','mlieko'],['krupicová','kaša']], name: 'Krupicová kaša', cal: 280, p: 9, c: 48, f: 6 },
+    { keys: [['lečo','klobása'],['leco','klobasa']], name: 'Lečo s klobásou', cal: 480, p: 22, c: 18, f: 36 },
+    { keys: [['hovädzí','steak'],['rib','eye'],['t-bone']], name: 'Hovädzí steak (porcia)', cal: 550, p: 48, c: 0, f: 38 },
+    { keys: [['kuracie','wok'],['kura','wok'],['wok','zelenina']], name: 'Kuracie wok so zeleninou', cal: 420, p: 32, c: 34, f: 14 },
+    { keys: [['pad','thai']], name: 'Pad Thai', cal: 580, p: 22, c: 78, f: 18 },
+    { keys: [['ramen'],['pho']], name: 'Ramen / Pho polievka', cal: 460, p: 22, c: 58, f: 14 },
+    { keys: [['sushi'],['maki'],['nigiri']], name: 'Sushi (8-10 ks)', cal: 380, p: 16, c: 60, f: 6 },
+    { keys: [['tortilla','wrap'],['wrap','kura'],['wrap','kuracie']], name: 'Wrap s kurom', cal: 480, p: 28, c: 48, f: 18 },
+    { keys: [['hrach','údený'],['hrachová','polievka']], name: 'Hrachová polievka', cal: 320, p: 18, c: 36, f: 10 }
 ];
 
 function smartParseSlovakMeal(mealString) {
     const text = mealString.toLowerCase().trim();
     if (!text) return null;
-    
+
     // Split into tokens
     const words = text.split(/[\s,.\-+]+/).filter(w => w.length > 2);
-    
+
+    // === KROK 1: Skús detekovať kompletné hotové jedlo z COMMON_DISHES ===
+    let bestDishMatch = null;
+    let bestDishScore = 0;
+    COMMON_DISHES.forEach(dish => {
+        dish.keys.forEach(keyGroup => {
+            // keyGroup je pole kľúčových slov — všetky musia byť v texte
+            const allMatch = keyGroup.every(k => text.includes(k));
+            if (allMatch && keyGroup.length > bestDishScore) {
+                bestDishScore = keyGroup.length;
+                bestDishMatch = dish;
+            }
+        });
+    });
+
+    if (bestDishMatch) {
+        // Našli sme hotové jedlo. Skontroluj ešte či nie sú v texte extra prílohy (ryža, zemiaky, hranolky, cestoviny)
+        let baseP = bestDishMatch.p;
+        let baseC = bestDishMatch.c;
+        let baseF = bestDishMatch.f;
+        let baseCal = bestDishMatch.cal;
+        let extras = [];
+
+        const sidesMap = [
+            { keys: ['ryža','ryza','ryžou','ryzou'], name: 'Ryža', p: 3, c: 55, f: 0.5, cal: 230, g: 70 },
+            { keys: ['zemiak','zemiaky','zemiakmi','varené zemiaky'], name: 'Zemiaky varené', p: 3, c: 28, f: 0, cal: 130, g: 200 },
+            { keys: ['hranolky','hranolkami'], name: 'Hranolky', p: 4, c: 50, f: 18, cal: 360, g: 150 },
+            { keys: ['cestoviny','spagety','špagety'], name: 'Cestoviny varené', p: 5, c: 35, f: 1, cal: 170, g: 180 },
+            { keys: ['knedľa','knedla','knedlík','knedlik'], name: 'Knedľa', p: 7, c: 50, f: 3, cal: 250, g: 150 },
+            { keys: ['chlieb','chleba','rožok','rozok','pečivo'], name: 'Pečivo', p: 8, c: 52, f: 3, cal: 260, g: 60 }
+        ];
+        sidesMap.forEach(side => {
+            // Skontroluj len ak base dish ešte neobsahuje danú prílohu
+            const dishAlreadyHasIt = bestDishMatch.keys.flat().some(k => side.keys.includes(k));
+            if (!dishAlreadyHasIt && side.keys.some(k => text.includes(k))) {
+                const g = side.g;
+                baseP += side.p * g / 100;
+                baseC += side.c * g / 100;
+                baseF += side.f * g / 100;
+                baseCal += side.cal * g / 100;
+                extras.push(side.name);
+            }
+        });
+
+        const capitalizeName = mealString.charAt(0).toUpperCase() + mealString.slice(1);
+        return {
+            name: capitalizeName,
+            calories: Math.round(baseCal),
+            protein: Math.round(baseP),
+            carbs: Math.round(baseC),
+            fats: Math.round(baseF),
+            ingredients: [bestDishMatch.name, ...extras]
+        };
+    }
+
+    // === KROK 2: Fallback na sumarizovanie ingrediencií ===
     let totalP = 0;
     let totalC = 0;
     let totalF = 0;
@@ -1905,7 +2039,150 @@ document.addEventListener('DOMContentLoaded', () => {
     setupModalEvents();
     setupParserFlow();
     setupFrequentMealsForm();
+    setupProductSearch();
 });
+
+// === OPEN FOOD FACTS — vyhľadávanie konkrétnych balených produktov ===
+let activeProductSelection = null;
+
+function setupProductSearch() {
+    const btnOpen = document.getElementById('btn-open-product-search');
+    const modal = document.getElementById('product-search-modal');
+    const btnClose = document.getElementById('btn-close-product-search');
+    const form = document.getElementById('form-product-search');
+    const input = document.getElementById('product-search-input');
+    const status = document.getElementById('product-search-status');
+    const results = document.getElementById('product-search-results');
+
+    if (!btnOpen || !modal) return;
+
+    btnOpen.addEventListener('click', () => {
+        modal.classList.add('active');
+        results.innerHTML = '';
+        status.textContent = '';
+        input.value = '';
+        setTimeout(() => input.focus(), 100);
+    });
+    btnClose.addEventListener('click', () => modal.classList.remove('active'));
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const q = input.value.trim();
+        if (!q) return;
+
+        results.innerHTML = '';
+        status.textContent = 'Hľadám v Open Food Facts...';
+
+        try {
+            const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&action=process&json=1&page_size=12&fields=product_name,brands,quantity,nutriments,image_small_url,code`;
+            const resp = await fetch(url);
+            if (!resp.ok) throw new Error('HTTP ' + resp.status);
+            const data = await resp.json();
+            const products = (data.products || []).filter(p => {
+                const n = p.nutriments || {};
+                // Vyžaduj aspoň energiu a bielkoviny
+                return (n['energy-kcal_100g'] || n['energy-kcal']) && (n.proteins_100g != null);
+            });
+
+            if (products.length === 0) {
+                status.textContent = 'Nenašli sme žiadny vhodný produkt. Skús inú formuláciu.';
+                return;
+            }
+
+            status.textContent = `Nájdených ${products.length} produktov. Vyber jeden:`;
+            renderProductResults(products);
+        } catch (err) {
+            console.error(err);
+            status.textContent = 'Chyba pri vyhľadávaní (Open Food Facts neodpovedá).';
+        }
+    });
+
+    // PORTION MODAL setup
+    document.getElementById('btn-close-product-portion').addEventListener('click', () => {
+        document.getElementById('product-portion-modal').classList.remove('active');
+    });
+    document.getElementById('portion-grams-input').addEventListener('input', updatePortionMacros);
+    document.getElementById('btn-log-product-portion').addEventListener('click', () => {
+        if (!activeProductSelection) return;
+        const g = parseFloat(document.getElementById('portion-grams-input').value) || 100;
+        const p = activeProductSelection;
+        const factor = g / 100;
+        logMealToDiary({
+            name: `${p.brand ? p.brand + ' — ' : ''}${p.name} (${g}g)`,
+            calories: Math.round(p.cal100 * factor),
+            protein: +(p.prot100 * factor).toFixed(1),
+            carbs: +(p.carb100 * factor).toFixed(1),
+            fats: +(p.fat100 * factor).toFixed(1),
+            price: 0
+        });
+        document.getElementById('product-portion-modal').classList.remove('active');
+        document.getElementById('product-search-modal').classList.remove('active');
+        const dashboardTab = document.querySelector('.bottom-nav .nav-item[data-screen="screen-dashboard"]');
+        if (dashboardTab) dashboardTab.click();
+    });
+}
+
+function renderProductResults(products) {
+    const results = document.getElementById('product-search-results');
+    results.innerHTML = '';
+    products.forEach(p => {
+        const n = p.nutriments || {};
+        const cal100 = Math.round(n['energy-kcal_100g'] || n['energy-kcal'] || 0);
+        const prot100 = +(n.proteins_100g || 0).toFixed(1);
+        const carb100 = +(n.carbohydrates_100g || 0).toFixed(1);
+        const fat100 = +(n.fat_100g || 0).toFixed(1);
+        const name = p.product_name || 'Neznámy produkt';
+        const brand = (p.brands || '').split(',')[0].trim();
+        const qty = p.quantity || '';
+
+        const card = document.createElement('div');
+        card.className = 'product-result-card';
+        card.innerHTML = `
+            <div class="product-result-info">
+                <div class="product-result-name">${brand ? '<b>'+brand+'</b> — ' : ''}${name} ${qty ? '<span class="product-result-qty">'+qty+'</span>' : ''}</div>
+                <div class="product-result-macros">${cal100} kcal • B:${prot100}g • S:${carb100}g • T:${fat100}g <span style="opacity:.6">/100g</span></div>
+            </div>
+            <button class="outline-gold-btn product-pick-btn" style="min-width:80px;">Vybrať</button>
+        `;
+        card.querySelector('.product-pick-btn').addEventListener('click', () => {
+            activeProductSelection = { name, brand, cal100, prot100, carb100, fat100, defaultGrams: parseQtyToGrams(qty) || 100 };
+            openPortionModal();
+        });
+        results.appendChild(card);
+    });
+}
+
+function parseQtyToGrams(qty) {
+    if (!qty) return null;
+    const m = qty.match(/(\d+[.,]?\d*)\s*(g|kg|ml|l)/i);
+    if (!m) return null;
+    let n = parseFloat(m[1].replace(',', '.'));
+    const unit = m[2].toLowerCase();
+    if (unit === 'kg' || unit === 'l') n *= 1000;
+    return Math.round(n);
+}
+
+function openPortionModal() {
+    if (!activeProductSelection) return;
+    const p = activeProductSelection;
+    document.getElementById('portion-brand').textContent = p.brand || 'PRODUKT';
+    document.getElementById('portion-product-name').textContent = p.name;
+    document.getElementById('portion-grams-input').value = p.defaultGrams;
+    updatePortionMacros();
+    document.getElementById('product-portion-modal').classList.add('active');
+}
+
+function updatePortionMacros() {
+    if (!activeProductSelection) return;
+    const g = parseFloat(document.getElementById('portion-grams-input').value) || 0;
+    const factor = g / 100;
+    const p = activeProductSelection;
+    document.getElementById('portion-grams-label').textContent = g;
+    document.getElementById('portion-cal').textContent = Math.round(p.cal100 * factor);
+    document.getElementById('portion-prot').textContent = (p.prot100 * factor).toFixed(1) + 'g';
+    document.getElementById('portion-carbs').textContent = (p.carb100 * factor).toFixed(1) + 'g';
+    document.getElementById('portion-fats').textContent = (p.fat100 * factor).toFixed(1) + 'g';
+}
 
 // Update human readable date
 function updateDateDisplay() {

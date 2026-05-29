@@ -107,6 +107,9 @@
                                 </svg>
                             </button>
                         </form>
+                        <button type="button" class="outline-gold-btn" id="btn-open-product-search" style="width:100%; margin-top:10px;">
+                            🔍 Hľadať konkrétny balený produkt
+                        </button>
                     </div>
 
                     <!-- Logged Meals List -->
@@ -504,6 +507,85 @@
                         </button>
                         <button class="text-btn" id="btn-cancel-parsed">Upraviť názov jedla</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. PRODUCT SEARCH MODAL (Open Food Facts) -->
+    <div class="modal-overlay" id="product-search-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="btn-close-product-search" aria-label="Zatvoriť">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <span class="modal-subtitle">VYHĽADÁVANIE PRODUKTU</span>
+                <h2 class="modal-title font-serif">Hľadaj balený výrobok</h2>
+                <p class="card-desc">Napíš značku alebo názov výrobku (napr. <i>Calvo tuniak</i>, <i>Activia jogurt</i>, <i>Milka mliečna</i>). Dáta z verejnej databázy Open Food Facts.</p>
+
+                <form id="form-product-search" class="search-box" style="margin-top:14px;">
+                    <input type="text" id="product-search-input" placeholder="Značka alebo názov výrobku..." required autocomplete="off">
+                    <button type="submit" class="gold-square-btn" aria-label="Hľadať">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </form>
+
+                <div id="product-search-status" style="margin-top:12px; font-size:13px; color:var(--text-muted);"></div>
+                <div id="product-search-results" class="product-results-list" style="margin-top:14px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. PRODUCT PORTION MODAL (zvoľ gramáž po výbere produktu) -->
+    <div class="modal-overlay" id="product-portion-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="btn-close-product-portion" aria-label="Zatvoriť">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-body">
+                <span class="modal-subtitle" id="portion-brand">ZNAČKA</span>
+                <h2 class="modal-title font-serif" id="portion-product-name">Názov produktu</h2>
+
+                <div class="modal-nutrition-card gold-border" style="margin-top:14px;">
+                    <div class="modal-nutrition-title">HODNOTY NA <span id="portion-grams-label">100</span>g</div>
+                    <div class="modal-macros-row">
+                        <div class="macro-micro-box">
+                            <span class="val gold-text" id="portion-cal">0</span>
+                            <span class="lbl">kcal</span>
+                        </div>
+                        <div class="macro-micro-box">
+                            <span class="val" id="portion-prot">0g</span>
+                            <span class="lbl">Bielkoviny</span>
+                        </div>
+                        <div class="macro-micro-box">
+                            <span class="val" id="portion-carbs">0g</span>
+                            <span class="lbl">Sacharidy</span>
+                        </div>
+                        <div class="macro-micro-box">
+                            <span class="val" id="portion-fats">0g</span>
+                            <span class="lbl">Tuky</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top:14px;">
+                    <label for="portion-grams-input">Koľko gramov si zjedol?</label>
+                    <input type="number" id="portion-grams-input" value="100" min="1" max="2000">
+                </div>
+
+                <div class="modal-action-btn-wrapper">
+                    <button class="primary-gold-btn" id="btn-log-product-portion">
+                        + PRIDAŤ DO JEDÁLNIČKA
+                    </button>
                 </div>
             </div>
         </div>
