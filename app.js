@@ -1870,24 +1870,24 @@ function generateSuggestions(selectedTags = [], customFilterText = '') {
             if (recentlyShownIds.has(rec.id)) score -= 3;
             score += Math.random() * 0.9; // jitter pre rotáciu
             return { recipe: rec, score, baseScore };
-        }).filter(item => item.baseScore > -200); // diet block (-100) si necháme tu, prísny filter vyriešime nižšie
+        }).filter(item => item.baseScore !== -100); // odfiltruj LEN diétne blokované. -999 (strict no-match) si necháme ako záložné fillers.
 
         shuffle(scored);
         scored.sort((a, b) => b.score - a.score);
 
-        // Rozdeľ na matchujúce filter (baseScore > 0 keď je filter) a ostatné
+        // Rozdeľ: matches = recepty čo zodpovedajú filtru, fillers = ostatné (záložné)
         let matches, fillers;
         if (hasUserFilters) {
-            matches = scored.filter(s => s.baseScore !== -999 && s.baseScore > 0);
-            fillers = scored.filter(s => s.baseScore === -999 || s.baseScore === 0);
+            matches = scored.filter(s => s.baseScore > 0);
+            fillers = scored.filter(s => s.baseScore === -999);
         } else {
             matches = scored;
             fillers = [];
         }
 
-        // Najprv všetky matchujúce, potom doplň najlepšie ostatné do 3
+        // Najprv všetky matchujúce, potom doplň najlepšie ostatné do 3 — žiadny prázdny tab!
         const pick = [...matches.slice(0, 3)];
-        if (pick.length < 3) {
+        if (pick.length < 3 && fillers.length > 0) {
             pick.push(...fillers.slice(0, 3 - pick.length));
         }
         result[tier] = pick.map(item => item.recipe);
@@ -2048,7 +2048,43 @@ document.addEventListener('DOMContentLoaded', () => {
     setupParserFlow();
     setupFrequentMealsForm();
     setupProductSearch();
+    setupForceUpdate();
 });
+
+function setupForceUpdate() {
+    const btn = document.getElementById('btn-force-update');
+    const status = document.getElementById('update-status');
+    if (!btn) return;
+
+    btn.addEventListener('click', async () => {
+        status.textContent = 'Kontrolujem aktualizáciu...';
+        btn.disabled = true;
+
+        try {
+            // 1. Vyžiadaj update service workera
+            if ('serviceWorker' in navigator) {
+                const reg = await navigator.serviceWorker.getRegistration();
+                if (reg) {
+                    await reg.update();
+                }
+                // 2. Vymaž všetky cache okrem najnovšieho
+                if (window.caches) {
+                    const keys = await caches.keys();
+                    await Promise.all(keys.map(k => caches.delete(k)));
+                }
+            }
+            status.textContent = 'Hotovo. Načítavam novú verziu...';
+            setTimeout(() => {
+                // Tvrdé znovunačítanie z internetu
+                window.location.reload();
+            }, 600);
+        } catch (e) {
+            console.error(e);
+            status.textContent = 'Chyba pri aktualizácii. Skús zavrieť a otvoriť appku.';
+            btn.disabled = false;
+        }
+    });
+}
 
 // === OPEN FOOD FACTS — vyhľadávanie konkrétnych balených produktov ===
 let activeProductSelection = null;

@@ -1,7 +1,7 @@
 // MealMate Service Worker — Network-first strategy
 // Pri každom otvorení sa skúsi stiahnuť čerstvý kód. Cache je len pre offline fallback.
 
-const CACHE_NAME = 'mealmate-v10';
+const CACHE_NAME = 'mealmate-v12';
 const ASSETS = [
   './',
   './index.html',
