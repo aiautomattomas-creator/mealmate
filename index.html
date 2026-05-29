@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>MealMate — Osobný Inteligentný Jedálniček</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0c0c0c">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    
+    <!-- Fonts (Playfair Display for headings & Outfit for UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Main Mobile Screen Container -->
+        <div class="mobile-frame">
+            
+            <!-- App Header -->
+            <header class="app-header">
+                <div class="brand">
+                    <span class="logo-subtitle">MEALMATE</span>
+                </div>
+                <button class="settings-btn" id="btn-to-profile" aria-label="Nastavenia">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+            </header>
+
+            <!-- Screen Content Wrapper -->
+            <main class="screen-content" id="screen-container">
+                
+                <!-- 1. DASHBOARD SCREEN (Prehľad dňa) -->
+                <section id="screen-dashboard" class="app-screen active">
+                    <div class="screen-header">
+                        <span class="date-badge" id="current-date">Štvrtok, 28. Máj</span>
+                        <h1 class="screen-title">Dnešný prehľad</h1>
+                    </div>
+
+                    <!-- Macro Progress Wheels & Numbers -->
+                    <div class="progress-card">
+                        <div class="calorie-summary">
+                            <div class="circle-progress-wrapper">
+                                <svg class="progress-ring" width="130" height="130">
+                                    <circle class="progress-ring__circle-bg" stroke="#1d1d1f" stroke-width="8" fill="transparent" r="54" cx="65" cy="65"/>
+                                    <circle class="progress-ring__circle" id="ring-calories" stroke="#c5a059" stroke-width="8" stroke-dasharray="339.29" stroke-dashoffset="339.29" stroke-linecap="round" fill="transparent" r="54" cx="65" cy="65"/>
+                                </svg>
+                                <div class="calorie-text">
+                                    <span class="cal-value" id="current-calories">0</span>
+                                    <span class="cal-label">z <span id="target-calories">2000</span> kcal</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="macros-grid">
+                            <div class="macro-bar-item">
+                                <div class="macro-info">
+                                    <span class="macro-label">Bielkoviny</span>
+                                    <span class="macro-val"><span id="current-protein">0</span>g / <span id="target-protein">140</span>g</span>
+                                </div>
+                                <div class="bar-bg">
+                                    <div class="bar-fill protein-color" id="bar-protein" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <div class="macro-bar-item">
+                                <div class="macro-info">
+                                    <span class="macro-label">Sacharidy</span>
+                                    <span class="macro-val"><span id="current-carbs">0</span>g / <span id="target-carbs">220</span>g</span>
+                                </div>
+                                <div class="bar-bg">
+                                    <div class="bar-fill carbs-color" id="bar-carbs" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <div class="macro-bar-item">
+                                <div class="macro-info">
+                                    <span class="macro-label">Tuky</span>
+                                    <span class="macro-val"><span id="current-fats">0</span>g / <span id="target-fats">65</span>g</span>
+                                </div>
+                                <div class="bar-bg">
+                                    <div class="bar-fill fats-color" id="bar-fats" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Custom Meal Quick Form -->
+                    <div class="quick-add-card">
+                        <h3 class="card-subtitle">ANALÝZA VLASTNÉHO JEDLA</h3>
+                        <p class="card-desc">Napíš jedlo (napr. <i>kuracie nugetky s ryžou</i>) a systém automaticky dopočíta nutričné hodnoty z internetu.</p>
+                        <form id="form-quick-add" class="search-box">
+                            <input type="text" id="quick-add-input" placeholder="Čo si jedol? (napr. tvaroh s banánom)" required autocomplete="off">
+                            <button type="submit" class="gold-square-btn" aria-label="Analyzovať jedlo">
+                                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Logged Meals List -->
+                    <div class="logged-meals-section">
+                        <div class="section-header">
+                            <h2 class="section-title">Záznam jedál</h2>
+                            <button class="clear-all-btn" id="btn-clear-day">Reset dňa</button>
+                        </div>
+                        <div class="meals-list" id="logged-meals-container">
+                            <!-- Populated by JS -->
+                            <div class="empty-meals-state">
+                                <p>Dnes si ešte nezaznamenal žiadne jedlo.</p>
+                                <button class="outline-gold-btn" id="btn-go-suggest">Navrhnúť jedlo</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. GET SUGGESTIONS SEARCH SCREEN (Čo dnes jem?) -->
+                <section id="screen-get-suggestions" class="app-screen">
+                    <div class="screen-header">
+                        <span class="date-badge">ODPORÚČACÍ ASISTENT</span>
+                        <h1 class="screen-title" id="suggestion-time-title">Večer.</h1>
+                        <p class="screen-subtitle" id="suggestion-time-subtitle">Čas na večeru.</p>
+                    </div>
+
+                    <div class="chips-container-wrapper">
+                        <h3 class="section-title-small">NA ČO MÁŠ CHUŤ?</h3>
+                        <div class="chips-grid" id="chips-container">
+                            <!-- Chips elements populated by JS or hardcoded -->
+                            <button class="chip" data-tag="ľahké">Niečo ľahké</button>
+                            <button class="chip" data-tag="sýte">Niečo sýte</button>
+                            <button class="chip" data-tag="sladké">Sladké</button>
+                            <button class="chip" data-tag="slané">Slané</button>
+                            <button class="chip" data-tag="teplé">Teplé</button>
+                            <button class="chip" data-tag="studené">Studené</button>
+                            <button class="chip" data-tag="mäso">Mäso</button>
+                            <button class="chip" data-tag="ryba">Ryba</button>
+                            <button class="chip" data-tag="zelenina">Zelenina</button>
+                            <button class="chip" data-tag="cestoviny">Cestoviny</button>
+                            <button class="chip" data-tag="ryža">Ryža</button>
+                            <button class="chip" data-tag="vajcia">Vajcia</button>
+                            <button class="chip" data-tag="polievka">Polievka</button>
+                            <button class="chip" data-tag="šalát">Šalát</button>
+                            <button class="chip" data-tag="smoothie">Smoothie</button>
+                            <button class="chip" data-tag="pečivo">Pečivo</button>
+                            <button class="chip" data-tag="wrap">Wrap</button>
+                            <button class="chip" data-tag="syr">Syr</button>
+                        </div>
+                    </div>
+
+                    <div class="custom-flavor-input-wrapper">
+                        <label for="custom-pref-input" class="section-title-small">ALEBO NAPÍŠ VLASTNÉ...</label>
+                        <input type="text" id="custom-pref-input" placeholder="Napr. jahody, avokádo, bez lepku..." autocomplete="off">
+                    </div>
+
+                    <div class="action-btn-wrapper">
+                        <button class="primary-gold-btn" id="btn-generate-offers">
+                            UKÁZAŤ PONUKU
+                        </button>
+                        <p class="helper-text-italic">Vyber na čo máš chuť a nechaj to na mňa.</p>
+                    </div>
+                </section>
+
+                <!-- 3. SUGGESTIONS RESULTS SCREEN (Nové návrhy) -->
+                <section id="screen-suggestions-results" class="app-screen">
+                    <button class="gold-top-header-btn" id="btn-back-to-filters">
+                        NOVÉ NÁVRHY
+                    </button>
+
+                    <!-- Price Tier & Frequency Tabs -->
+                    <div class="tabs-navigation">
+                        <button class="tab-btn active" data-tier="lacnejsie">
+                            <span class="tab-arrow">↓</span>
+                            <span class="tab-text">Lacnejšie</span>
+                        </button>
+                        <button class="tab-btn" data-tier="standard">
+                            <span class="tab-arrow">—</span>
+                            <span class="tab-text">Štandard</span>
+                        </button>
+                        <button class="tab-btn" data-tier="drahsie">
+                            <span class="tab-arrow">↑</span>
+                            <span class="tab-text">Drahšie</span>
+                        </button>
+                        <button class="tab-btn" data-tier="najcastejsie">
+                            <span class="tab-arrow">⭐</span>
+                            <span class="tab-text">Najčastejšie</span>
+                        </button>
+                    </div>
+
+                    <div class="results-header-small" id="results-count-title">
+                        VEČERA — 3 NÁVRHY
+                    </div>
+
+                    <!-- Suggested Meals Container -->
+                    <div class="suggestions-list" id="suggestions-list-container">
+                        <!-- Populated dynamically by JS -->
+                    </div>
+                </section>
+
+                <!-- 4. PROFILE SCREEN (Ciele a nastavenia) -->
+                <section id="screen-profile" class="app-screen">
+                    <div class="screen-header">
+                        <span class="date-badge">MÔJ PROFIL</span>
+                        <h1 class="screen-title">Ciele & Nastavenia</h1>
+                    </div>
+
+                    <!-- Goals Form -->
+                    <div class="settings-card">
+                        <h3 class="settings-card-title">Osobné parametre</h3>
+                        
+                        <div class="form-row-grid">
+                            <div class="form-group">
+                                <label for="profile-weight">Hmotnosť (kg)</label>
+                                <input type="number" id="profile-weight" value="80" min="30" max="250">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-target-weight">Cieľová hmotnosť (kg)</label>
+                                <input type="number" id="profile-target-weight" value="78" min="30" max="250">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-goal">Vizuálny & Váhový cieľ</label>
+                            <select id="profile-goal">
+                                <option value="chudnutie" selected>Chudnutie & Redukcia tuku</option>
+                                <option value="udrziavanie">Udržiavanie hmotnosti & Formovanie</option>
+                                <option value="rekompozicia">Redukcia tuku & Naberanie svalov</option>
+                                <option value="budovanie">Budovanie svalovej hmoty</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profile-diet">Stravovacie preferencie</label>
+                            <select id="profile-diet">
+                                <option value="vsejed">Všežravec (Všetko)</option>
+                                <option value="vegetarian">Vegetarián</option>
+                                <option value="bezlaktozovy">Bezlaktózová strava</option>
+                                <option value="bezlepkovy">Bezlepková strava</option>
+                            </select>
+                        </div>
+                        
+                        <button class="outline-gold-btn" style="width:100%; margin-top:10px;" id="btn-save-profile">
+                            Uložiť a prepočítať ciele
+                        </button>
+                    </div>
+
+                    <!-- Frequent Meals Manager -->
+                    <div class="settings-card">
+                        <h3 class="settings-card-title">Moje najčastejšie jedlá</h3>
+                        <p class="settings-card-desc">Jedlá, ktoré sa ti zobrazujú v záložke „Najčastejšie" pri ponuke. Pridávajú sa automaticky, keď si zaznamenáš jedlo do denníka — tu môžeš pridať aj vlastné manuálne.</p>
+
+                        <div id="frequent-meals-list" class="frequent-meals-list">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <form id="form-add-frequent" class="frequent-add-form">
+                            <div class="form-row-grid">
+                                <div class="form-group">
+                                    <label for="freq-name">Názov jedla</label>
+                                    <input type="text" id="freq-name" placeholder="napr. Tvaroh s banánom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="freq-time">Denná doba</label>
+                                    <select id="freq-time">
+                                        <option value="ranajky">Raňajky</option>
+                                        <option value="desiata">Desiata</option>
+                                        <option value="obed">Obed</option>
+                                        <option value="olovrant">Olovrant</option>
+                                        <option value="vecera">Večera</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row-grid form-row-quad">
+                                <div class="form-group">
+                                    <label for="freq-cal">Kcal</label>
+                                    <input type="number" id="freq-cal" value="400" min="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="freq-p">Bielk. (g)</label>
+                                    <input type="number" id="freq-p" value="25" min="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="freq-c">Sach. (g)</label>
+                                    <input type="number" id="freq-c" value="40" min="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="freq-f">Tuky (g)</label>
+                                    <input type="number" id="freq-f" value="15" min="0" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="outline-gold-btn" style="width:100%;">+ Pridať vlastné jedlo</button>
+                        </form>
+                    </div>
+
+                    <!-- Calculated Target Intake -->
+                    <div class="settings-card gold-border">
+                        <h3 class="settings-card-title gold-text">Odporúčaný denný limit</h3>
+                        <p class="settings-card-desc">Automaticky dopočítané na základe Vašich cieľov pre maximálny progres.</p>
+                        
+                        <div class="limits-display">
+                            <div class="limit-box">
+                                <span class="limit-num" id="info-calories">2000</span>
+                                <span class="limit-lbl">Kalórie (kcal)</span>
+                            </div>
+                            <div class="limit-sub-grid">
+                                <div class="limit-sub-box">
+                                    <span class="limit-sub-num" id="info-protein">140g</span>
+                                    <span class="limit-sub-lbl">Bielkoviny</span>
+                                </div>
+                                <div class="limit-sub-box">
+                                    <span class="limit-sub-num" id="info-carbs">220g</span>
+                                    <span class="limit-sub-lbl">Sacharidy</span>
+                                </div>
+                                <div class="limit-sub-box">
+                                    <span class="limit-sub-num" id="info-fats">65g</span>
+                                    <span class="limit-sub-lbl">Tuky</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Bottom Navigation Bar -->
+            <nav class="bottom-nav">
+                <button class="nav-item active" data-screen="screen-dashboard">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="9"></rect>
+                        <rect x="14" y="3" width="7" height="5"></rect>
+                        <rect x="14" y="12" width="7" height="9"></rect>
+                        <rect x="3" y="16" width="7" height="5"></rect>
+                    </svg>
+                    <span>Denník</span>
+                </button>
+                <button class="nav-item search-pulsing" data-screen="screen-get-suggestions">
+                    <div class="nav-glow-btn">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <span style="margin-top: 4px;">Ponuka</span>
+                </button>
+                <button class="nav-item" data-screen="screen-profile">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Profil</span>
+                </button>
+            </nav>
+
+        </div>
+    </div>
+
+    <!-- 5. RECEPT DETAIL MODAL (Detail jedla a postup) -->
+    <div class="modal-overlay" id="recipe-modal">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="btn-close-recipe" aria-label="Zatvoriť recept">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="modal-body">
+                <span class="modal-subtitle">RECEPT</span>
+                <h2 class="modal-title" id="recipe-modal-title">Kuracie prsia s dusenou zeleninou</h2>
+                
+                <div class="recipe-meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-lbl">ČAS</span>
+                        <span class="meta-val" id="recipe-modal-time">25 min</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-lbl">NÁROČNOSŤ</span>
+                        <span class="meta-val" id="recipe-modal-difficulty">Jednoduché</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-lbl">ODHADOVANÁ CENA</span>
+                        <span class="meta-val gold-text" id="recipe-modal-price">~2.80 €</span>
+                    </div>
+                </div>
+
+                <!-- Macros Breakdown -->
+                <div class="modal-nutrition-card">
+                    <div class="modal-nutrition-title">NUTRIČNÉ HODNOTY (NA PORCIU)</div>
+                    <div class="modal-macros-row">
+                        <div class="macro-micro-box">
+                            <span class="val" id="recipe-modal-cal">320</span>
+                            <span class="lbl">kcal</span>
+                        </div>
+                        <div class="macro-micro-box">
+                            <span class="val" id="recipe-modal-prot">38g</span>
+                            <span class="lbl">Bielkoviny</span>
+                        </div>
+                        <div class="macro-micro-box">
+                            <span class="val" id="recipe-modal-carbs">12g</span>
+                            <span class="lbl">Sacharidy</span>
+                        </div>
+                        <div class="macro-micro-box">
+                            <span class="val" id="recipe-modal-fats">10g</span>
+                            <span class="lbl">Tuky</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recipe-section">
+                    <span class="modal-section-title">INGREDIENCIE</span>
+                    <ul class="ingredients-list" id="recipe-modal-ingredients">
+                        <!-- Populated by JS -->
+                    </ul>
+                </div>
+
+                <div class="recipe-section">
+                    <span class="modal-section-title">POSTUP</span>
+                    <ol class="steps-list" id="recipe-modal-steps">
+                        <!-- Populated by JS -->
+                    </ol>
+                </div>
+                
+                <div class="modal-action-btn-wrapper">
+                    <button class="primary-gold-btn" id="btn-log-modal-meal">
+                        + PRIDAŤ DO DNEŠNÉHO JEDÁLNIČKA
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. SMART PARSER ANALYSIS MODAL -->
+    <div class="modal-overlay" id="parser-modal">
+        <div class="modal-content parser-modal-content">
+            <button class="modal-close-btn" id="btn-close-parser" aria-label="Zatvoriť">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="modal-body text-center">
+                <!-- Searching/Analysis Animation -->
+                <div id="parser-loading-state" class="parser-state-content">
+                    <div class="spinner-wrapper">
+                        <div class="double-bounce1"></div>
+                        <div class="double-bounce2"></div>
+                    </div>
+                    <h3 class="modal-title font-serif gold-text">Hľadám na internete...</h3>
+                    <p class="loading-subtitle">Analyzujem jedlo a odhadujem nutričné hodnoty.</p>
+                </div>
+
+                <!-- Analysis Success State -->
+                <div id="parser-success-state" class="parser-state-content hidden">
+                    <div class="success-badge">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <span class="modal-subtitle">SMART ANALÝZA ÚSPEŠNÁ</span>
+                    <h2 class="modal-title font-serif" id="parser-meal-title">Kuracie nugetky s ryžou</h2>
+                    <p class="parser-badge-internet">Nutričný odhad z databázy internetových potravín</p>
+
+                    <!-- Parsed Macros -->
+                    <div class="modal-nutrition-card gold-border">
+                        <div class="modal-macros-row">
+                            <div class="macro-micro-box">
+                                <span class="val gold-text" id="parser-cal">540</span>
+                                <span class="lbl">kcal</span>
+                            </div>
+                            <div class="macro-micro-box">
+                                <span class="val" id="parser-prot">38g</span>
+                                <span class="lbl">Bielkoviny</span>
+                            </div>
+                            <div class="macro-micro-box">
+                                <span class="val" id="parser-carbs">62g</span>
+                                <span class="lbl">Sacharidy</span>
+                            </div>
+                            <div class="macro-micro-box">
+                                <span class="val" id="parser-fats">14g</span>
+                                <span class="lbl">Tuky</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ingredients-chip-preview-box">
+                        <span class="section-title-small">ROZPOZNANÉ ZLOŽKY</span>
+                        <div class="ingredients-chips" id="parser-ingredients-chips">
+                            <!-- e.g. kuracie prsia, biela ryža, olej -->
+                        </div>
+                    </div>
+
+                    <div class="modal-action-btn-wrapper">
+                        <button class="primary-gold-btn" id="btn-log-parsed-meal">
+                            PRIDAŤ DO JEDÁLNIČKA
+                        </button>
+                        <button class="text-btn" id="btn-cancel-parsed">Upraviť názov jedla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="app.js"></script>
+</body>
+</html>
