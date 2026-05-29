@@ -90,6 +90,28 @@ const RECIPE_DATABASE = {
                     'Posypte škoricou a pokvapkajte medom.'
                 ],
                 tags: ['ľahké', 'sladké', 'teplé', 'pečivo']
+            },
+            {
+                id: 'r_lac_4',
+                name: 'Šunkovo-syrový sendvič s uhorkou',
+                description: 'Klasický rýchly studený sendvič — celozrnný chlieb so šunkou, eidamom a kolieskami uhorky.',
+                price: 1.30, priceTier: 'lacnejsie',
+                calories: 380, protein: 22, carbs: 38, fats: 14,
+                time: '5 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['2 plátky celozrnného chleba', '40g šunky', '30g eidamu', '1/2 ks uhorka', '1 lyžička masla', 'List šalátu'],
+                steps: ['Chlieb potri tenko maslom.', 'Naskladaj šunku, syr, kolieska uhorky a šalát.', 'Prikry druhým plátkom a podávaj.'],
+                tags: ['sýte', 'slané', 'studené', 'syr', 'pečivo', 'mäso']
+            },
+            {
+                id: 'r_lac_5',
+                name: 'Banánové smoothie s ovsom',
+                description: 'Rýchle a sýte smoothie z mlieka, banánu a ovsených vločiek — energia na celé doobedie.',
+                price: 0.90, priceTier: 'lacnejsie',
+                calories: 280, protein: 8, carbs: 52, fats: 4,
+                time: '4 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['1 ks zrelý banán', '30g ovsené vločky', '250ml polotučné mlieko', '1 lyžička medu', 'Štipka škorice'],
+                steps: ['Všetky suroviny vlož do mixéra.', 'Rozmixuj na hladké smoothie cca 30 sekúnd.', 'Nalej do pohára a posyp škoricou.'],
+                tags: ['ľahké', 'sladké', 'studené', 'smoothie']
             }
         ],
         standard: [
@@ -178,6 +200,28 @@ const RECIPE_DATABASE = {
                     'Posypte práškovým cukrom podľa chuti.'
                 ],
                 tags: ['sýte', 'sladké', 'teplé', 'vajcia', 'syr']
+            },
+            {
+                id: 'r_std_4',
+                name: 'Tvarohový tanier s ovocím a granolou',
+                description: 'Vysoko proteínový tanier z polotučného tvarohu s čerstvým ovocím a domácou granolou.',
+                price: 1.80, priceTier: 'standard',
+                calories: 320, protein: 26, carbs: 38, fats: 6,
+                time: '5 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['200g jemný tvaroh', '60g zmiešaného ovocia (jahody, banán)', '20g granoly', '1 lyžička medu'],
+                steps: ['Tvaroh vyklop do misky a zľahka roztri.', 'Posyp granolou a poklaď ovocím.', 'Polej medom.'],
+                tags: ['ľahké', 'sladké', 'studené', 'syr']
+            },
+            {
+                id: 'r_std_5',
+                name: 'Wrap s kuracím a špenátom',
+                description: 'Teplý raňajkový wrap s grilovaným kuracím mäsom, čerstvým špenátom a jogurtovým dressingom.',
+                price: 2.20, priceTier: 'standard',
+                calories: 480, protein: 32, carbs: 42, fats: 16,
+                time: '15 min', difficulty: 'Jednoduché',
+                ingredients: ['1 ks celozrnná tortilla', '120g kuracích pŕs', '40g čerstvého špenátu', '50g bieleho jogurtu', '1 strúčik cesnaku', 'Soľ, korenie'],
+                steps: ['Kuracie prsia nakrájaj na prúžky, ochuť a opeč na panvici.', 'Z jogurtu, cesnaku a soli urob rýchly dressing.', 'Tortillu nahrej, natri dressingom, naskladaj kura a špenát, zaviň.'],
+                tags: ['sýte', 'slané', 'teplé', 'mäso', 'wrap', 'zelenina']
             }
         ],
         drahsie: [
@@ -267,6 +311,28 @@ const RECIPE_DATABASE = {
                     'Podávajte ihneď, kým je smoothie ešte studené a husté.'
                 ],
                 tags: ['ľahké', 'sladké', 'studené', 'smoothie']
+            },
+            {
+                id: 'r_drh_4',
+                name: 'Pancakes s ricottou a malinami',
+                description: 'Nadýchané americké pancakes z ricotty s čerstvými malinami a javorovým sirupom.',
+                price: 3.80, priceTier: 'drahsie',
+                calories: 520, protein: 22, carbs: 52, fats: 22,
+                time: '20 min', difficulty: 'Stredne náročné',
+                ingredients: ['100g ricotta', '2 ks vajce', '60g hladká múka', '60g čerstvé maliny', '1 lyžička prášok do pečiva', '2 lyžice javorového sirupu', 'Maslo na panvicu'],
+                steps: ['Zmiešaj ricottu, žĺtky, múku a prášok do pečiva.', 'Vyšľahaj bielky do tuha a opatrne vmiešaj.', 'Na panvici s maslom peč malé pancakes z oboch strán.', 'Servíruj s malinami a javorovým sirupom.'],
+                tags: ['sýte', 'sladké', 'teplé', 'syr']
+            },
+            {
+                id: 'r_drh_5',
+                name: 'Frittata so šunkou, paradajkami a špenátom',
+                description: 'Talianska frittata zapečená v rúre — bohaté raňajky s vajciami, prosciuttom, baby špenátom a cherry paradajkami.',
+                price: 3.50, priceTier: 'drahsie',
+                calories: 440, protein: 30, carbs: 8, fats: 30,
+                time: '25 min', difficulty: 'Stredne náročné',
+                ingredients: ['4 ks vajce', '40g prosciutto crudo', '60g baby špenátu', '6 ks cherry paradajok', '30g parmezánu', 'Olivový olej, soľ, korenie'],
+                steps: ['V miske rozšľahaj vajcia so soľou a strúhaným parmezánom.', 'Na ohňovzdornej panvici zľahka opeč špenát a paradajky.', 'Pridaj prosciutto, zalej vajcami.', 'Zapeč v rúre 180 °C asi 12 min do zlatista.'],
+                tags: ['sýte', 'slané', 'teplé', 'vajcia', 'mäso', 'zelenina']
             }
         ]
     },
@@ -327,6 +393,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['3 ks ryžové chlebíky', '120g jemný tvaroh', '1 ks paradajka', 'Soľ, pažítka'],
                 steps: ['Tvaroh osoľte a natrite na chlebíky.', 'Položte plátky paradajky a posypte pažítkou.'],
                 tags: ['ľahké', 'slané', 'studené', 'syr', 'zelenina']
+            },
+            {
+                id: 'd_lac_4',
+                name: 'Vajce natvrdo s celozrnným pečivom',
+                description: 'Klasická slaná desiata — 2 vajcia natvrdo s celozrnným rožkom a štipkou soli.',
+                price: 0.80, priceTier: 'lacnejsie',
+                calories: 280, protein: 16, carbs: 28, fats: 10,
+                time: '10 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['2 ks vajce', '1 ks celozrnný rožok', 'Soľ, čierne korenie', 'Pažítka'],
+                steps: ['Vajcia uvar natvrdo (cca 9 min).', 'Vychladnuté olúp, rozkroj na polovice.', 'Osoľ, posyp pažítkou a podávaj s rožkom.'],
+                tags: ['sýte', 'slané', 'studené', 'vajcia', 'pečivo']
+            },
+            {
+                id: 'd_lac_5',
+                name: 'Čokoládovo-banánové smoothie',
+                description: 'Sladké rýchle smoothie z banánu, kakaa a mlieka — lacné a nasýti chuť na sladké.',
+                price: 0.90, priceTier: 'lacnejsie',
+                calories: 240, protein: 8, carbs: 44, fats: 4,
+                time: '3 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['1 ks zrelý banán', '250ml polotučné mlieko', '1 lyžica kakaa', '1 lyžička medu'],
+                steps: ['Banán, mlieko, kakao a med vlož do mixéra.', 'Rozmixuj na hladko.', 'Nalej do pohára.'],
+                tags: ['ľahké', 'sladké', 'studené', 'smoothie']
             }
         ],
         standard: [
@@ -385,6 +473,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['40g ovsené vločky', '4 ks mäkké datle', '20g srvátkový proteín', '10g arašidové maslo', '1 lyžica vody'],
                 steps: ['Datle rozmixujte so 2 lyžicami vody na pastu.', 'Pridajte vločky, proteín a arašidové maslo.', 'Vytvarujte tyčinky a dajte chladiť aspoň 10 minút.'],
                 tags: ['sýte', 'sladké', 'studené']
+            },
+            {
+                id: 'd_std_4',
+                name: 'Pečené kuracie nugety s jogurtovým dipom',
+                description: 'Doma pečené kuracie nugety v parmezánovej kôrke s ľahkým jogurtovým dipom.',
+                price: 1.80, priceTier: 'standard',
+                calories: 380, protein: 28, carbs: 22, fats: 18,
+                time: '20 min', difficulty: 'Jednoduché',
+                ingredients: ['150g kuracích pŕs', '30g strúhanky', '20g parmezánu', '1 ks vajce', '80g bieleho jogurtu', '1 strúčik cesnaku, soľ'],
+                steps: ['Kura nakrájaj na kúsky, ochuť.', 'Obal v rozšľahanom vajci a v zmesi strúhanky a parmezánu.', 'Peč v rúre 200 °C 12-15 min.', 'Z jogurtu a cesnaku pripravdip.'],
+                tags: ['sýte', 'slané', 'teplé', 'mäso']
+            },
+            {
+                id: 'd_std_5',
+                name: 'Ovocno-proteínové smoothie',
+                description: 'Vyvážené smoothie s proteínom, banánom a lesným ovocím — ideálne po tréningu alebo pred prácou.',
+                price: 1.60, priceTier: 'standard',
+                calories: 280, protein: 28, carbs: 30, fats: 4,
+                time: '4 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['30g srvátkový proteín (vanilka)', '1/2 ks banán', '60g lesného ovocia', '250ml polotučné mlieko'],
+                steps: ['Všetky suroviny rozmixuj v mixéri.', 'Konzistenciu uprav vodou alebo ľadom.', 'Konzumuj ihneď.'],
+                tags: ['ľahké', 'sladké', 'studené', 'smoothie']
             }
         ],
         drahsie: [
@@ -446,6 +556,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['1 ks burrata (125g)', '8 ks cherry paradajok', '1 lyžička bazalkového pesta', 'Olivový olej, hrubozrnná soľ, čerstvá bazalka'],
                 steps: ['Burratu položte do stredu tanieru.', 'Cherry paradajky rozpolte a obložte.', 'Polejte pestom a olivovým olejom, dosoľte.'],
                 tags: ['ľahké', 'slané', 'studené', 'syr', 'zelenina']
+            },
+            {
+                id: 'd_drh_4',
+                name: 'Krevetový koktail v citrónovej omáčke',
+                description: 'Luxusná studená desiata — varené tigrie krevety v limetkovo-jogurtovej omáčke s avokádom.',
+                price: 3.80, priceTier: 'drahsie',
+                calories: 240, protein: 24, carbs: 8, fats: 12,
+                time: '8 min', difficulty: 'Jednoduché',
+                ingredients: ['120g varených krevety (chladené)', '1/2 ks avokádo', '60g bieleho jogurtu', '1/2 ks limetka', 'Chilli, soľ, koriander'],
+                steps: ['Krevetam odstráň pancier ak nie sú olúpané.', 'Avokádo nakrájaj na kocky.', 'V miske premiešaj jogurt, limetkovú šťavu, soľ a chilli.', 'Pridaj krevety a avokádo, ozdob koriandrom.'],
+                tags: ['ľahké', 'slané', 'studené', 'ryba']
+            },
+            {
+                id: 'd_drh_5',
+                name: 'Bagel s lososom a krémovým syrom',
+                description: 'Prémiový sezamový bagel s krémovým syrom, plátkami údeného lososa, červenou cibuľou a kaparami.',
+                price: 4.20, priceTier: 'drahsie',
+                calories: 450, protein: 28, carbs: 38, fats: 22,
+                time: '5 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['1 ks sezamový bagel', '50g krémový syr (Philadelphia)', '60g údeného lososa', '1/4 ks červená cibuľa', '1 lyžička kaparí', 'Kôpor, čierne korenie'],
+                steps: ['Bagel rozkroj a opeč v hriankovači.', 'Spodok natri krémovým syrom.', 'Polož losos, červenú cibuľu na pierka a kapary.', 'Posyp čerstvým kôprom a prikry vrchom.'],
+                tags: ['sýte', 'slané', 'studené', 'ryba', 'syr', 'pečivo']
             }
         ]
     },
@@ -524,6 +656,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['400g zemiakov', '1 ks vajce', '2 lyžice hladkej múky', '2 strúčiky cesnaku', '50g zakysanej smotany', 'Olej na vyprážanie, soľ, majoránka'],
                 steps: ['Zemiaky postrúhajte na jemnom strúhadle a vytlačte vodu.', 'Pridajte vajce, múku, prelisovaný cesnak, soľ a majoránku.', 'Na rozpálenom oleji vyprážajte placky z oboch strán do zlatista.', 'Podávajte so zakysanou smotanou.'],
                 tags: ['sýte', 'slané', 'teplé', 'zelenina']
+            },
+            {
+                id: 'o_lac_4',
+                name: 'Kuracia vývarová polievka so zeleninou',
+                description: 'Ľahká domáca polievka — kuracie prsia vo vývare s mrkvou, petržlenom a rezancami. Zasýti, ale nezaťaží.',
+                price: 1.40, priceTier: 'lacnejsie',
+                calories: 320, protein: 30, carbs: 22, fats: 10,
+                time: '30 min', difficulty: 'Jednoduché',
+                ingredients: ['150g kuracích pŕs', '1 ks mrkva', '1/2 ks petržlen', '1/2 ks cibuľa', '40g rezancov', '700ml vody', 'Soľ, vegeta, petržlenová vňať'],
+                steps: ['Kura, mrkvu, petržlen a cibuľu daj variť do vody s trochou soli.', 'Po 20 min vyber mäso, nakrájaj na kúsky.', 'Do vývaru pridaj rezance a zeleninu na kocky, povar 5 min.', 'Vráť mäso, dochuť a posyp vňaťou.'],
+                tags: ['ľahké', 'slané', 'teplé', 'polievka', 'mäso', 'zelenina']
+            },
+            {
+                id: 'o_lac_5',
+                name: 'Vyprážaný syr s ryžou a tatárskou omáčkou',
+                description: 'Klasika slovenských bistier — vyprážaný eidam s dusenou ryžou a domácou tatárkou.',
+                price: 1.90, priceTier: 'lacnejsie',
+                calories: 680, protein: 26, carbs: 70, fats: 32,
+                time: '20 min', difficulty: 'Jednoduché',
+                ingredients: ['120g eidamu (hrubší plátok)', '60g surovej ryže', '1 ks vajce', '40g hladkej múky', '40g strúhanky', '60g tatárskej omáčky', 'Olej na vyprážanie'],
+                steps: ['Ryžu dus podľa návodu.', 'Syr trojobaľ (múka, vajce, strúhanka).', 'Vypráž v rozpálenom oleji do zlatista cca 2 min z každej strany.', 'Servíruj s ryžou a tatárkou.'],
+                tags: ['sýte', 'slané', 'teplé', 'syr', 'ryža']
             }
         ],
         standard: [
@@ -587,6 +741,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['1 ks celozrnná tortilla', '150g kuracích pŕs', '50g ľadového šalátu', '1/2 ks paradajka', '1/4 ks červená cibuľa', '60g bieleho jogurtu', '1 strúčik cesnaku', 'Soľ, korenie'],
                 steps: ['Kuracie prsia nakrájajte na prúžky, osoľte, okoreňte a opečte na panvici.', 'Z jogurtu, cesnaku a soli pripravte dip.', 'Tortillu zľahka nahrejte na suchej panvici.', 'Natrite dipom, naložte kura, šalát, paradajku a cibuľu.', 'Pevne zaviňte a podávajte.'],
                 tags: ['sýte', 'slané', 'teplé', 'mäso', 'wrap', 'zelenina']
+            },
+            {
+                id: 'o_std_4',
+                name: 'Lososové filé s grilovanou cuketou',
+                description: 'Ľahký obed — pečené filé z lososa s grilovanou cuketou a citrónom.',
+                price: 3.20, priceTier: 'standard',
+                calories: 380, protein: 32, carbs: 8, fats: 22,
+                time: '20 min', difficulty: 'Jednoduché',
+                ingredients: ['180g filé z lososa', '1 ks cuketa', '1/2 ks citrón', '1 lyžica olivového oleja', 'Soľ, čierne korenie, kôpor'],
+                steps: ['Lososa potri olejom, soľou a kôprom, peč v rúre 180 °C 12 min.', 'Cuketu nakrájaj na kolieska a grilovaj na panvici 3 min z každej strany.', 'Servíruj s plátkom citróna.'],
+                tags: ['ľahké', 'slané', 'teplé', 'ryba', 'zelenina']
+            },
+            {
+                id: 'o_std_5',
+                name: 'Caesar šalát s grilovaným kuracím',
+                description: 'Klasický šalát s grilovaným kurom, parmezánom, krutónmi a caesar dresingom.',
+                price: 3.00, priceTier: 'standard',
+                calories: 420, protein: 38, carbs: 18, fats: 22,
+                time: '15 min', difficulty: 'Jednoduché',
+                ingredients: ['150g kuracích pŕs', '150g rímskeho šalátu', '30g parmezánu', '30g krutónov', '40g caesar dresingu', 'Olivový olej, soľ'],
+                steps: ['Kura osoľ a grilovaj na panvici cca 4 min z každej strany.', 'Šalát natrhaj, premiešaj s dresingom.', 'Pridaj nakrájané kura, krutóny a strúhaný parmezán.'],
+                tags: ['ľahké', 'slané', 'studené', 'mäso', 'šalát', 'syr']
             }
         ],
         drahsie: [
@@ -653,6 +829,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['1 ks kačacie stehno confit (vákuové)', '300g zemiakov', '40ml smotany na šľahanie', '20g masla', '1 ks červená cibuľa', '1 lyžica balzamika'],
                 steps: ['Zemiaky uvarte a roztlačte s maslom a smotanou.', 'Kačacie stehno opečte z kožky dochrumkava (cca 5 min) a dohrejte v rúre 180 °C 10 min.', 'Cibuľu nakrájajte na pierka, opečte s balzamikom dosklovita.', 'Servírujte stehno na kaši, ozdobte cibuľou.'],
                 tags: ['sýte', 'slané', 'teplé', 'mäso', 'zelenina']
+            },
+            {
+                id: 'o_drh_4',
+                name: 'Hovädzie carpaccio s rukolou a parmezánom',
+                description: 'Talianska klasika — tenké plátky vyzretého hovädzieho na rukole s parmezánom a olivovým olejom.',
+                price: 6.50, priceTier: 'drahsie',
+                calories: 380, protein: 32, carbs: 6, fats: 26,
+                time: '10 min', difficulty: 'Jednoduché',
+                ingredients: ['120g vyzretej hovädzej sviečkovice (tenko nakrájaná)', '60g rukoly', '30g parmezánu', '2 lyžice extra panenského olivového oleja', '1/2 ks citrón', 'Hrubozrnná soľ, čierne korenie'],
+                steps: ['Plátky mäsa rozlož na studený tanier.', 'Polej olejom a citrónovou šťavou, posyp soľou a korením.', 'Na vrch poklaď rukolu a hobliny parmezánu.'],
+                tags: ['ľahké', 'slané', 'studené', 'mäso', 'zelenina', 'syr']
+            },
+            {
+                id: 'o_drh_5',
+                name: 'Špargľové rizoto s parmezánom',
+                description: 'Krémové talianske rizoto s arboriou, zelenou špargľou, bielym vínom a parmezánom.',
+                price: 5.80, priceTier: 'drahsie',
+                calories: 480, protein: 14, carbs: 62, fats: 18,
+                time: '30 min', difficulty: 'Stredne náročné',
+                ingredients: ['100g ryža arborio', '150g zelená špargľa', '50ml biele víno', '500ml zeleninový vývar', '40g parmezánu', '20g masla', '1/2 ks cibule, soľ, korenie'],
+                steps: ['Cibuľu zľahka opraž na masle.', 'Pridaj ryžu, krátko opraž a podlej vínom.', 'Postupne prilievaj horúci vývar a stále miešaj cca 18 min.', 'V poslednej fáze pridaj povarené kúsky špargle a parmezán.'],
+                tags: ['ľahké', 'slané', 'teplé', 'ryža', 'zelenina', 'syr']
             }
         ]
     },
@@ -711,6 +909,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['2 ks mrkva', '80g hummusu (cícer, tahini, citrón, olej)', 'Sezamové semienka'],
                 steps: ['Mrkvu olúpte a nakrájajte na paličky.', 'Hummus vyklopte do misky a posypte sezamom.', 'Mrkvu namáčajte do hummusu.'],
                 tags: ['ľahké', 'slané', 'studené', 'zelenina']
+            },
+            {
+                id: 'ol_lac_4',
+                name: 'Tvarohovo-jahodová nátierka s rožkom',
+                description: 'Sladká domáca nátierka z tvarohu a jahôd, podávaná s celozrnným rožkom.',
+                price: 1.10, priceTier: 'lacnejsie',
+                calories: 320, protein: 18, carbs: 38, fats: 8,
+                time: '5 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['150g jemný tvaroh', '60g jahôd', '1 lyžička medu', '1 ks celozrnný rožok'],
+                steps: ['Jahody roztlač vidličkou na pyré.', 'Pomiešaj s tvarohom a medom.', 'Natri na rozkrojený rožok.'],
+                tags: ['sýte', 'sladké', 'studené', 'syr', 'pečivo']
+            },
+            {
+                id: 'ol_lac_5',
+                name: 'Kukuričné chlebíky s tuniakovou nátierkou',
+                description: 'Ľahká slaná desiata — kukuričné chlebíky s domácou tuniakovou nátierkou z konzervy a jogurtu.',
+                price: 1.40, priceTier: 'lacnejsie',
+                calories: 240, protein: 18, carbs: 22, fats: 8,
+                time: '5 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['3 ks kukuričné chlebíky', '80g tuniak vo vlastnej šťave', '40g bieleho jogurtu', '1/2 ks cibuľka', 'Soľ, čierne korenie, pažítka'],
+                steps: ['Tuniaka sceď a roztlač vidličkou.', 'Vmiešaj jogurt, nakrájanú cibuľku a okoreň.', 'Natri na chlebíky a posyp pažítkou.'],
+                tags: ['ľahké', 'slané', 'studené', 'ryba']
             }
         ],
         standard: [
@@ -770,6 +990,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['6 ks mäkkých datlí', '40g ovsených vločiek', '10g kakaa', '15g mandlí', '1 lyžička kokosových lupienkov'],
                 steps: ['Datle, vločky, kakao a mandle rozmixujte do hutnej hmoty.', 'Tvarujte malé guľky a obaľte v kokose.', 'Dajte stuhnúť do chladničky aspoň 15 minút.'],
                 tags: ['sýte', 'sladké', 'studené']
+            },
+            {
+                id: 'ol_std_4',
+                name: 'Toast s mozzarellou a paradajkou',
+                description: 'Rýchly teplý toast — opečený chlieb s plátkami mozzarelly, paradajky a bazalkou (caprese štýl).',
+                price: 2.00, priceTier: 'standard',
+                calories: 380, protein: 22, carbs: 38, fats: 14,
+                time: '8 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['2 plátky toastového chleba', '80g mozzarelly', '1 ks paradajka', 'Čerstvá bazalka, olivový olej, soľ'],
+                steps: ['Chlieb opeč v hriankovači.', 'Naskladaj kolieska mozzarelly a paradajky.', 'Polej olejom, posyp soľou a bazalkou.'],
+                tags: ['sýte', 'slané', 'teplé', 'syr', 'pečivo', 'zelenina']
+            },
+            {
+                id: 'ol_std_5',
+                name: 'Zelený šejk s banánom, špenátom a proteínom',
+                description: 'Zelené proteínové smoothie z banánu, čerstvého špenátu a vanilkového proteínu.',
+                price: 1.80, priceTier: 'standard',
+                calories: 290, protein: 28, carbs: 32, fats: 3,
+                time: '4 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['1 ks banán', '40g čerstvého špenátu', '30g srvátkového proteínu', '250ml vody alebo rastlinného mlieka'],
+                steps: ['Všetky suroviny vlož do mixéra.', 'Rozmixuj do hladka cca 40 sekúnd.', 'Nalej do pohára.'],
+                tags: ['ľahké', 'sladké', 'studené', 'smoothie', 'zelenina']
             }
         ],
         drahsie: [
@@ -831,6 +1073,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['1 ks zrelé avokádo', '1 krajec kváskového chleba', '1/2 ks limetka', 'Chilli vločky, soľ, koriander'],
                 steps: ['Avokádo nakrájajte na drobné kocky.', 'Premiešajte so šťavou z limetky, soľou a chilli.', 'Chlieb opečte na panvici a tartar naložte na vrch, ozdobte koriandrom.'],
                 tags: ['ľahké', 'slané', 'teplé', 'pečivo']
+            },
+            {
+                id: 'ol_drh_4',
+                name: 'Bruschetta s tuniakom a olivami',
+                description: 'Talianska bruschetta — opečený kváskový chlieb s tuniakom, čiernymi olivami a paradajkami.',
+                price: 3.20, priceTier: 'drahsie',
+                calories: 360, protein: 22, carbs: 32, fats: 16,
+                time: '10 min', difficulty: 'Jednoduché',
+                ingredients: ['2 plátky kváskového chleba', '80g tuniak v olivovom oleji', '6 ks čiernych olív', '1 ks paradajka', 'Olivový olej, bazalka, soľ'],
+                steps: ['Chlieb opeč na suchej panvici.', 'Tuniaka roztlač, premiešaj s nakrájanými olivami.', 'Polož na chlieb spolu s kockami paradajky.', 'Ozdob bazalkou a polej olejom.'],
+                tags: ['sýte', 'slané', 'teplé', 'ryba', 'pečivo']
+            },
+            {
+                id: 'ol_drh_5',
+                name: 'Grilovaný halloumi so zeleninou',
+                description: 'Cyperský grilovaný syr halloumi so zeleninovým grilom — paprika, cuketa, baklažán.',
+                price: 3.40, priceTier: 'drahsie',
+                calories: 410, protein: 24, carbs: 12, fats: 30,
+                time: '15 min', difficulty: 'Jednoduché',
+                ingredients: ['120g halloumi', '1/2 ks paprika', '1/2 ks cuketa', '1/2 ks baklažán', '1 lyžica olivového oleja', 'Mäta, soľ, citrón'],
+                steps: ['Zeleninu nakrájaj na plátky a polej olejom.', 'Gril na panvici z oboch strán.', 'Halloumi nakrájaj na plátky a opraž 1 min z každej strany.', 'Servíruj s plátkom citróna a mätou.'],
+                tags: ['sýte', 'slané', 'teplé', 'syr', 'zelenina']
             }
         ]
     },
@@ -911,6 +1175,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['600ml vody', '4 strúčiky cesnaku', '1 ks vajce', '2 krajce chleba', '1 lyžica oleja', 'Soľ, rasca, majoránka'],
                 steps: ['Vodu privarte s rascou, soľou a majoránkou.', 'Prilejte prelisovaný cesnak a varte 5 min.', 'Rozšľahané vajce vlejte tenkým prúdom za stáleho miešania.', 'Chlieb opečte na panvici dochrumkava.', 'Polievku nalejte do misy s hriankami navrchu.'],
                 tags: ['ľahké', 'slané', 'teplé', 'polievka', 'vajcia', 'pečivo']
+            },
+            {
+                id: 'v_lac_4',
+                name: 'Zeleninový šalát s tuniakom',
+                description: 'Studený šalát z čerstvej zeleniny, tuniaka a vajca — ľahká večera bohatá na bielkoviny.',
+                price: 1.80, priceTier: 'lacnejsie',
+                calories: 280, protein: 28, carbs: 12, fats: 14,
+                time: '10 min', difficulty: 'Veľmi jednoduché',
+                ingredients: ['80g tuniak vo vlastnej šťave', '1 ks vajce natvrdo', '100g ľadového šalátu', '1 ks paradajka', '1/2 ks uhorka', 'Olivový olej, ocot, soľ'],
+                steps: ['Šalát natrhaj, paradajku a uhorku nakrájaj.', 'Pridaj sceďeného tuniaka a štvrtky vajca.', 'Polej olejom, octom a osoľ.'],
+                tags: ['ľahké', 'slané', 'studené', 'ryba', 'šalát', 'zelenina']
+            },
+            {
+                id: 'v_lac_5',
+                name: 'Hustá fazuľová polievka',
+                description: 'Tradičná hustá polievka z bielej fazule, mrkvy a údenej slaninky — sýti na celý večer.',
+                price: 1.20, priceTier: 'lacnejsie',
+                calories: 380, protein: 18, carbs: 52, fats: 8,
+                time: '40 min', difficulty: 'Jednoduché',
+                ingredients: ['120g sušenej bielej fazule (alebo 250g konzervy)', '40g údenej slaninky', '1 ks mrkva', '1/2 ks petržlen', '1 strúčik cesnaku', 'Majoránka, soľ, ocot'],
+                steps: ['Fazuľu namoč cez noc a uvar do mäkka (45 min). Z konzervy stačí scediť.', 'Slaninku opraž s cibuľou, pridaj nakrájanú koreňovú zeleninu.', 'Spoj s fazuľou, dolej vodu, dochuť cesnakom, majoránkou a soľou.', 'Pred podávaním pokvapkaj octom.'],
+                tags: ['sýte', 'slané', 'teplé', 'polievka', 'zelenina']
             }
         ],
         standard: [
@@ -982,6 +1268,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['1 ks veľká cuketa', '60g syra feta', '1 ks vajce', '4 lyžice strúhanky', '120g bieleho jogurtu', '1 strúčik cesnaku', 'Mäta, soľ, korenie'],
                 steps: ['Cuketu nastrúhajte a vytlačte vodu.', 'Zmiešajte s vajcom, drobeným fetou a strúhankou.', 'Tvarujte fašírky a pečte v rúre 200 °C na 20 min.', 'Z jogurtu, cesnaku a mäty pripravte dip.', 'Podávajte fašírky s dipom.'],
                 tags: ['ľahké', 'slané', 'teplé', 'syr', 'zelenina', 'vajcia']
+            },
+            {
+                id: 'v_std_4',
+                name: 'Cestoviny s pestom a cherry paradajkami',
+                description: 'Rýchla talianska večera — penne s domácim bazalkovým pestom a praženými cherry paradajkami.',
+                price: 2.20, priceTier: 'standard',
+                calories: 480, protein: 14, carbs: 68, fats: 18,
+                time: '15 min', difficulty: 'Jednoduché',
+                ingredients: ['100g penne', '40g bazalkového pesta', '10 ks cherry paradajok', '20g parmezánu', 'Olivový olej, soľ'],
+                steps: ['Cestoviny uvar al dente.', 'Cherry paradajky opraž na panvici s olejom 2 min.', 'Sceďené cestoviny premiešaj s pestom a paradajkami.', 'Posyp parmezánom.'],
+                tags: ['ľahké', 'slané', 'teplé', 'cestoviny', 'zelenina']
+            },
+            {
+                id: 'v_std_5',
+                name: 'Pečené kuracie krídelká s pečenou zeleninou',
+                description: 'Marinované krídelká pečené v rúre do chrumkava s pečenou zeleninou — paprikou, cuketou a mrkvou.',
+                price: 2.80, priceTier: 'standard',
+                calories: 560, protein: 36, carbs: 12, fats: 38,
+                time: '40 min', difficulty: 'Jednoduché',
+                ingredients: ['400g kuracích krídel', '1 ks paprika', '1 ks cuketa', '1 ks mrkva', '2 lyžice olivového oleja', 'Sójová omáčka, med, cesnak, paprika sladká'],
+                steps: ['Krídelká marinuj v zmesi sójovej omáčky, medu a cesnaku 15 min.', 'Zeleninu nakrájaj, polej olejom a osoľ.', 'Krídelká a zeleninu rozlož na plech, peč v rúre 200 °C cca 30 min.'],
+                tags: ['sýte', 'slané', 'teplé', 'mäso', 'zelenina']
             }
         ],
         drahsie: [
@@ -1048,6 +1356,28 @@ const RECIPE_DATABASE = {
                 ingredients: ['200g tuniakového steaku (sashimi grade)', '2 lyžice sezamových semienok', '150g wok zeleniny (paprika, cuketa, mrkva, brokolica)', '2 lyžice sójovej omáčky', '1 lyžica sezamového oleja', 'Zázvor, cesnak, jarná cibuľka'],
                 steps: ['Tuniaka obaľte v sezame, na rozpálenej panvici opekajte 45 sek z každej strany (rare).', 'Wok zeleninu prudko opečte na sezamovom oleji so zázvorom a cesnakom.', 'Zalejte sójovou omáčkou a krátko premiešajte.', 'Tuniaka nakrájajte na hrubšie plátky a servírujte na zelenine.', 'Posypte jarnou cibuľkou.'],
                 tags: ['sýte', 'slané', 'teplé', 'ryba', 'zelenina']
+            },
+            {
+                id: 'v_drh_4',
+                name: 'Risotto s hubami a parmezánom',
+                description: 'Krémové talianske rizoto s lesnými hubami, bielym vínom a hoblinami parmezánu.',
+                price: 4.80, priceTier: 'drahsie',
+                calories: 580, protein: 18, carbs: 72, fats: 22,
+                time: '35 min', difficulty: 'Stredne náročné',
+                ingredients: ['120g ryža arborio', '150g zmesi húb (hríby, šampiňóny)', '50ml biele víno', '500ml zeleninový vývar', '40g parmezánu', '20g masla', '1/2 ks cibule, petržlenová vňať'],
+                steps: ['Huby nakrájaj a opraž na masle s cibuľou.', 'Pridaj ryžu, krátko opraž, podlej vínom.', 'Postupne prilievaj horúci vývar a stále miešaj cca 20 min.', 'Dokonči maslom a parmezánom, posyp vňaťou.'],
+                tags: ['sýte', 'slané', 'teplé', 'ryža', 'syr', 'zelenina']
+            },
+            {
+                id: 'v_drh_5',
+                name: 'Pečené morčacie prsia s balzamikovou glazúrou',
+                description: 'Šťavnaté morčacie prsia pečené s balzamikom a tymianom — extra chudé, ideálne pre rysovanie postavy.',
+                price: 5.50, priceTier: 'drahsie',
+                calories: 420, protein: 48, carbs: 14, fats: 18,
+                time: '35 min', difficulty: 'Stredne náročné',
+                ingredients: ['200g morčacích pŕs', '2 lyžice balzamikového octu', '1 lyžička medu', '1 lyžica olivového oleja', '150g zelenej fazuľky', 'Tymián, cesnak, soľ, korenie'],
+                steps: ['Morčacie potri zmesou balzamika, medu, cesnaku, oleja, soli a tymianu.', 'Daj piecť do rúry 190 °C na 25 min.', 'Zelenú fazuľku zľahka podusíte na masle s cesnakom.', 'Mäso nakrájaj a servíruj s fazuľkou.'],
+                tags: ['ľahké', 'slané', 'teplé', 'mäso', 'zelenina']
             }
         ]
     }
@@ -1322,25 +1652,34 @@ function generateSuggestions(selectedTags = [], customFilterText = '') {
         najcastejsie: []
     };
     
+    const hasUserFilters = (selectedTags.length > 0) || (customFilterText && customFilterText.trim().length > 0);
+
     // Function to score compatibility of a recipe
     const getRecipeScore = (recipe) => {
         let score = 0;
-        
+        let tagMatches = 0;
+        let textMatches = 0;
+
         // Tag matching
         if (selectedTags.length > 0) {
             selectedTags.forEach(tag => {
-                if (recipe.tags.includes(tag)) score += 5;
+                if (recipe.tags.includes(tag)) { score += 5; tagMatches++; }
             });
         }
-        
+
         // Custom text search
         if (customFilterText) {
             const cleanText = customFilterText.toLowerCase();
-            if (recipe.name.toLowerCase().includes(cleanText)) score += 10;
-            if (recipe.description.toLowerCase().includes(cleanText)) score += 5;
+            if (recipe.name.toLowerCase().includes(cleanText)) { score += 10; textMatches++; }
+            if (recipe.description.toLowerCase().includes(cleanText)) { score += 5; textMatches++; }
             recipe.ingredients.forEach(ing => {
-                if (ing.toLowerCase().includes(cleanText)) score += 3;
+                if (ing.toLowerCase().includes(cleanText)) { score += 3; textMatches++; }
             });
+        }
+
+        // STRICT FILTER: ak user vybral filter a recept nemá žiadnu zhodu → vyhoď ho úplne
+        if (hasUserFilters && tagMatches === 0 && textMatches === 0) {
+            return -999;
         }
         
         // Diet filtering (strict exclusions)
@@ -1364,27 +1703,61 @@ function generateSuggestions(selectedTags = [], customFilterText = '') {
         return score;
     };
     
+    // Helper – Fisher-Yates shuffle
+    const shuffle = (arr) => {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    };
+
     // Categorize
     ['lacnejsie', 'standard', 'drahsie'].forEach(tier => {
         let recipesForTier = pool[tier] || [];
-        
+
         // If empty (e.g. pool lacks some specific tier, fallback to standard database dinner of same tier)
         if (recipesForTier.length === 0) {
             recipesForTier = RECIPE_DATABASE['vecera'][tier] || [];
         }
-        
-        // Score all
-        const scored = recipesForTier.map(rec => ({
-            recipe: rec,
-            score: getRecipeScore(rec)
-        })).filter(item => item.score >= -10); // filter out blocked diets
-        
-        // Sort by score
+
+        // Score all + penalize recently shown
+        const scored = recipesForTier.map(rec => {
+            let baseScore = getRecipeScore(rec);
+            let score = baseScore;
+            if (recentlyShownIds.has(rec.id)) score -= 3;
+            score += Math.random() * 0.9; // jitter pre rotáciu
+            return { recipe: rec, score, baseScore };
+        }).filter(item => item.baseScore > -200); // diet block (-100) si necháme tu, prísny filter vyriešime nižšie
+
+        shuffle(scored);
         scored.sort((a, b) => b.score - a.score);
-        
-        // Select top 3 or all available
-        result[tier] = scored.slice(0, 3).map(item => item.recipe);
+
+        // Rozdeľ na matchujúce filter (baseScore > 0 keď je filter) a ostatné
+        let matches, fillers;
+        if (hasUserFilters) {
+            matches = scored.filter(s => s.baseScore !== -999 && s.baseScore > 0);
+            fillers = scored.filter(s => s.baseScore === -999 || s.baseScore === 0);
+        } else {
+            matches = scored;
+            fillers = [];
+        }
+
+        // Najprv všetky matchujúce, potom doplň najlepšie ostatné do 3
+        const pick = [...matches.slice(0, 3)];
+        if (pick.length < 3) {
+            pick.push(...fillers.slice(0, 3 - pick.length));
+        }
+        result[tier] = pick.map(item => item.recipe);
     });
+
+    // Refresh memory of "recently shown" so next click bude posúvať výber
+    const newShown = new Set();
+    ['lacnejsie', 'standard', 'drahsie'].forEach(tier => {
+        result[tier].forEach(r => { if (r.id) newShown.add(r.id); });
+    });
+    // Ak by sme si pamätali všetko, nikdy by sa to nezopakovalo — nechávame len posledné kolo
+    recentlyShownIds = newShown;
     
     // Option 4: MOJE NAJČASTEJŠIE (My most frequent)
     // Filter frequent meals that match current time of day
@@ -1517,6 +1890,8 @@ let activeSuggestions = null;
 let currentSelectedTier = 'lacnejsie';
 let activeSelectedRecipe = null;
 let activeParsedMeal = null;
+// Tracks IDs zobrazených v predchádzajúcom kole — používa sa na rotáciu návrhov
+let recentlyShownIds = new Set();
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
