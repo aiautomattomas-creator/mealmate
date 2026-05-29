@@ -1449,21 +1449,21 @@ function recalculateLimits(shouldSave = true) {
     
     if (g === 'chudnutie') {
         targetCal = baseEnergy - 400; // Caloric deficit
-        pRatio = 2.0; // Higher protein to preserve muscle
+        pRatio = 1.8; // Mierne zvýšený protein na ochranu svalov v deficite
         fRatio = 0.8;
     } else if (g === 'budovanie') {
         targetCal = baseEnergy + 300; // Caloric surplus
-        pRatio = 2.2;
+        pRatio = 1.8; // Dostatočné pre maximálnu syntézu
         fRatio = 1.0;
     } else if (g === 'rekompozicia') {
-        // Body recomposition — mierny deficit + vysoké bielkoviny
+        // Body recomposition — mierny deficit, dostatočné bielkoviny
         targetCal = baseEnergy - 150;
-        pRatio = 2.3;
+        pRatio = 1.8;
         fRatio = 0.9;
     } else {
-        // Udrziavanie
+        // Udržiavanie — bežná potreba
         targetCal = baseEnergy;
-        pRatio = 1.8;
+        pRatio = 1.4;
         fRatio = 0.9;
     }
     
@@ -1797,7 +1797,15 @@ function generateSuggestions(selectedTags = [], customFilterText = '') {
         // Tag matching
         if (selectedTags.length > 0) {
             selectedTags.forEach(tag => {
-                if (recipe.tags.includes(tag)) { score += 5; tagMatches++; }
+                if (tag === 'bielkovinove') {
+                    // ŠPECIÁLNY TAG — uprednostni recepty s najvyšším obsahom bielkovín.
+                    // protein * 1.5 dominuje nad inými tag bonusmi (5), takže poradie sa zoradí podľa B.
+                    score += (recipe.protein || 0) * 1.5;
+                    tagMatches++; // počíta sa ako zhoda — žiadny recept nebude vyfiltrovaný strict režimom
+                } else if (recipe.tags.includes(tag)) {
+                    score += 5;
+                    tagMatches++;
+                }
             });
         }
 
@@ -2071,26 +2079,20 @@ function setupProductSearch() {
         if (!q) return;
 
         results.innerHTML = '';
-        status.textContent = 'Hľadám v Open Food Facts...';
+        status.textContent = 'Hľadám slovenské produkty...';
 
         try {
-            const url = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&action=process&json=1&page_size=12&fields=product_name,brands,quantity,nutriments,image_small_url,code`;
-            const resp = await fetch(url);
-            if (!resp.ok) throw new Error('HTTP ' + resp.status);
-            const data = await resp.json();
-            const products = (data.products || []).filter(p => {
-                const n = p.nutriments || {};
-                // Vyžaduj aspoň energiu a bielkoviny
-                return (n['energy-kcal_100g'] || n['energy-kcal']) && (n.proteins_100g != null);
+            const aggregated = await multiTierProductSearch(q, (msg) => {
+                status.textContent = msg;
             });
 
-            if (products.length === 0) {
-                status.textContent = 'Nenašli sme žiadny vhodný produkt. Skús inú formuláciu.';
+            if (aggregated.length === 0) {
+                status.textContent = 'Nenašli sme žiadny vhodný produkt. Skús inú formuláciu (napr. len značku, alebo len typ produktu).';
                 return;
             }
 
-            status.textContent = `Nájdených ${products.length} produktov. Vyber jeden:`;
-            renderProductResults(products);
+            status.textContent = `Nájdených ${aggregated.length} produktov. Vyber jeden:`;
+            renderProductResults(aggregated);
         } catch (err) {
             console.error(err);
             status.textContent = 'Chyba pri vyhľadávaní (Open Food Facts neodpovedá).';
@@ -2122,24 +2124,135 @@ function setupProductSearch() {
     });
 }
 
+// === Vrstvené vyhľadávanie: SK → CZ → svet ===
+async function multiTierProductSearch(query, onProgress) {
+    const seen = new Set();
+    const merged = [];
+
+    const pushUnique = (products, origin) => {
+        products.forEach(p => {
+            const key = p.code || (p.product_name + '|' + (p.brands || ''));
+            if (seen.has(key)) return;
+            seen.add(key);
+            p._origin = origin;
+            merged.push(p);
+        });
+    };
+
+    // Helper na zavolanie OFF s krajinou (cez tag) alebo bez
+    const fetchOFF = async (params) => {
+        const url = 'https://world.openfoodfacts.org/cgi/search.pl?' + params + '&search_simple=1&action=process&json=1&page_size=15&fields=product_name,product_name_sk,product_name_cs,brands,quantity,nutriments,countries_tags,code,lang';
+        try {
+            const r = await fetch(url);
+            if (!r.ok) return [];
+            const d = await r.json();
+            return (d.products || []).filter(isUsableProduct);
+        } catch (e) {
+            console.warn('OFF fetch error', e);
+            return [];
+        }
+    };
+
+    const baseQ = 'search_terms=' + encodeURIComponent(query);
+
+    // 1. SLOVENSKO
+    if (onProgress) onProgress('Hľadám slovenské produkty (🇸🇰)...');
+    const sk = await fetchOFF(baseQ + '&tagtype_0=countries&tag_contains_0=contains&tag_0=Slovakia');
+    pushUnique(sk, '🇸🇰');
+
+    // 2. ČESKO (ak SK málo)
+    if (merged.length < 5) {
+        if (onProgress) onProgress('Pridávam české produkty (🇨🇿)...');
+        const cz = await fetchOFF(baseQ + '&tagtype_0=countries&tag_contains_0=contains&tag_0=Czech-Republic');
+        pushUnique(cz, '🇨🇿');
+    }
+
+    // 3. SVET (ak stále málo)
+    if (merged.length < 5) {
+        if (onProgress) onProgress('Pridávam svetové produkty (🌍)...');
+        const world = await fetchOFF(baseQ);
+        pushUnique(world, '🌍');
+    }
+
+    // 4. Fallback — skús jednotlivé slová ak je viacslovná query a stále málo
+    if (merged.length < 3 && query.split(/\s+/).length > 1) {
+        if (onProgress) onProgress('Skúšam jednotlivé slová...');
+        for (const word of query.split(/\s+/).filter(w => w.length > 2)) {
+            const wRes = await fetchOFF('search_terms=' + encodeURIComponent(word));
+            pushUnique(wRes, '🌍');
+            if (merged.length >= 8) break;
+        }
+    }
+
+    // Zoraď: SK > CZ > svet a kompletnosť dát
+    const originScore = (o) => o === '🇸🇰' ? 100 : o === '🇨🇿' ? 50 : 10;
+    merged.sort((a, b) => {
+        const sa = originScore(a._origin) + completenessScore(a);
+        const sb = originScore(b._origin) + completenessScore(b);
+        return sb - sa;
+    });
+
+    return merged.slice(0, 20);
+}
+
+function completenessScore(p) {
+    const n = p.nutriments || {};
+    let s = 0;
+    if (n.proteins_100g != null) s += 3;
+    if (n.carbohydrates_100g != null) s += 3;
+    if (n.fat_100g != null) s += 3;
+    if (p.brands) s += 2;
+    if (p.quantity) s += 2;
+    return s;
+}
+
+function isUsableProduct(p) {
+    const n = p.nutriments || {};
+    // Energia môže byť v kcal alebo v kJ — uznáme oboje
+    const hasCal = (n['energy-kcal_100g'] != null) || (n['energy-kcal'] != null) || (n['energy_100g'] != null) || (n.energy != null);
+    if (!hasCal) return false;
+    // Aspoň 1 z makier musí byť k dispozícii
+    const hasAnyMacro = (n.proteins_100g != null) || (n.carbohydrates_100g != null) || (n.fat_100g != null);
+    if (!hasAnyMacro) return false;
+    // Filter prázdnych názvov
+    const name = bestProductName(p);
+    if (!name || name.length < 2) return false;
+    return true;
+}
+
+function bestProductName(p) {
+    return p.product_name_sk || p.product_name_cs || p.product_name || '';
+}
+
+function getKcalPer100(p) {
+    const n = p.nutriments || {};
+    if (n['energy-kcal_100g'] != null) return Math.round(n['energy-kcal_100g']);
+    if (n['energy-kcal'] != null) return Math.round(n['energy-kcal']);
+    // Konverzia z kJ
+    const kj = n['energy_100g'] != null ? n['energy_100g'] : n.energy;
+    if (kj != null) return Math.round(kj / 4.184);
+    return 0;
+}
+
 function renderProductResults(products) {
     const results = document.getElementById('product-search-results');
     results.innerHTML = '';
     products.forEach(p => {
         const n = p.nutriments || {};
-        const cal100 = Math.round(n['energy-kcal_100g'] || n['energy-kcal'] || 0);
+        const cal100 = getKcalPer100(p);
         const prot100 = +(n.proteins_100g || 0).toFixed(1);
         const carb100 = +(n.carbohydrates_100g || 0).toFixed(1);
         const fat100 = +(n.fat_100g || 0).toFixed(1);
-        const name = p.product_name || 'Neznámy produkt';
+        const name = bestProductName(p) || 'Neznámy produkt';
         const brand = (p.brands || '').split(',')[0].trim();
         const qty = p.quantity || '';
+        const origin = p._origin || '🌍';
 
         const card = document.createElement('div');
         card.className = 'product-result-card';
         card.innerHTML = `
             <div class="product-result-info">
-                <div class="product-result-name">${brand ? '<b>'+brand+'</b> — ' : ''}${name} ${qty ? '<span class="product-result-qty">'+qty+'</span>' : ''}</div>
+                <div class="product-result-name"><span class="product-flag">${origin}</span> ${brand ? '<b>'+brand+'</b> — ' : ''}${name} ${qty ? '<span class="product-result-qty">'+qty+'</span>' : ''}</div>
                 <div class="product-result-macros">${cal100} kcal • B:${prot100}g • S:${carb100}g • T:${fat100}g <span style="opacity:.6">/100g</span></div>
             </div>
             <button class="outline-gold-btn product-pick-btn" style="min-width:80px;">Vybrať</button>
